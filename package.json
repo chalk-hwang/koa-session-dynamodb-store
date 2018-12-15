@@ -1,0 +1,51 @@
+{
+  "name": "koa-session-dynamodb2",
+  "version": "0.1.0",
+  "description": "The DynamoDB extension store for koa-session.",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf dist && NODE_ENV=production babel lib -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DGURI/koa-session-dynamodb.git"
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "keywords": [
+    "dynamodb",
+    "dynamo",
+    "session",
+    "koa-session",
+    "session-store",
+    "koajs",
+    "koajs2",
+    "koa",
+    "koa2"
+  ],
+  "author": "DGURI",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DGURI/koa-session-dynamodb/issues",
+    "email": "dguri1997@gmail.com"
+  },
+  "homepage": "https://github.com/DGURI/koa-session-dynamodb#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.2.0",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.0",
+    "@babel/preset-flow": "^7.0.0",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.4",
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb-base": "13.1.0",
+    "eslint-plugin-flowtype": "^3.2.0",
+    "eslint-plugin-import": "^2.14.0",
+    "flow-bin": "^0.89.0",
+    "flow-typed": "^2.5.1"
+  },
+  "optionalDependencies": {
+    "aws-sdk": "^2.377.0"
+  }
+}
