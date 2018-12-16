@@ -1,6 +1,6 @@
 {
-  "name": "koa-session-dynamodb2",
-  "version": "0.1.0",
+  "name": "koa-session-dynamodb-store",
+  "version": "1.0.1",
   "description": "The DynamoDB extension store for koa-session.",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "url": "git+https://github.com/DGURI/koa-session-dynamodb.git"
   },
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=6.1.0"
   },
   "keywords": [
     "dynamodb",
