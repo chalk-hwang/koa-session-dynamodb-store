@@ -54,15 +54,15 @@ app.use(koaSession({
 
 ## Options
 
-```json
+```
 {
   "table": {
-    "name": "<NAME OF THE DYNAMO TABLE>", // default : sessions
-    "hashKey": "<NAME OF THE ID FIELD>", // default : sessionId
-    "ttlKey": "<NAME OF THE DYNAMO TTL FIELD>", // default: expires
-    "useTtlExpired": "<BOOLEAN>", // default: true
-    "readCapacityUnits": "<NUMBER>", // default : 5
-    "writeCapacityUnits": "<NUMBER>" // default : 5
+    "name": "<NAME OF THE DYNAMO TABLE>", // default,  sessions
+    "hashKey": "<NAME OF THE ID FIELD>", // default, sessionId
+    "ttlKey": "<NAME OF THE DYNAMO TTL FIELD>", // default, expires
+    "useTtlExpired": "<BOOLEAN>", // default, true
+    "readCapacityUnits": "<NUMBER>", // default,: 5
+    "writeCapacityUnits": "<NUMBER>" // default, 5
   },
   "dynamoConfig": {
     "accessKeyId": "<AWS ACCESS KEY>", // default
