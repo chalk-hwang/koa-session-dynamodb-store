@@ -1,6 +1,6 @@
 {
   "name": "koa-session-dynamodb-store",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "The DynamoDB extension store for koa-session.",
   "main": "index.js",
   "scripts": {
