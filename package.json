@@ -1,10 +1,11 @@
 {
   "name": "koa-session-dynamodb-store",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "The DynamoDB extension store for koa-session.",
   "main": "index.js",
   "scripts": {
-    "build": "rm -rf dist && NODE_ENV=production babel lib -d dist"
+    "build": "rm -rf dist && NODE_ENV=production babel lib -d dist",
+    "pb": "yarn build && yarn publish"
   },
   "repository": {
     "type": "git",
