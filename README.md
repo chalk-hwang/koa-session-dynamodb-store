@@ -67,8 +67,8 @@ app.use(koaSession({
   "dynamoConfig": {
     "accessKeyId": "<AWS ACCESS KEY>", // default
     "secretAccessKey": "<AWS ACCESS KEY SECRET>", // default
-    "region": "<AWS REGION>", // default
-    "endpoint": "<DYNAMO ENDPOINT>" // default, If you are using the local version of DynamoDB, it must be a word that starts with local.
+    "region": "<AWS REGION>", // default, If you are using the local version of DynamoDB, it must be a word that starts with local.
+    "endpoint": "<DYNAMO ENDPOINT>" // default
   }
 }
 ```

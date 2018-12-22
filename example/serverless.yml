@@ -1,0 +1,70 @@
+service:
+  name: koa-session-dynamodb-store-example
+
+# Add the serverless-webpack plugin
+plugins:
+  - serverless-webpack
+  - serverless-dotenv-plugin
+  - serverless-domain-manager
+  - serverless-dynamodb-local
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: ap-northeast-2
+  profile: ${env:AWS_PROFILE}
+  environment:
+    SESSION_DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}-session
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:CreateTable
+        - dynamodb:UpdateTable
+        - dynamodb:DescribeTable
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: 'arn:aws:dynamodb:${opt:region, self:provider.region}:*:*'
+
+functions:
+  api:
+    handler: src/api.handler
+    events:
+      - http:
+          path: /
+          method: ANY
+          cors:
+            origin: '*'
+            headers:
+              - Cookie
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+            allowCredentials: true
+      - http:
+          path: /{any+} # this matches any path, the token 'any' doesn't mean anything special
+          method: ANY
+          cors:
+            origin: '*'
+            headers:
+              - Cookie
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+            allowCredentials: true
+
+custom:
+  apigwBinary:
+    types: #list of mime-types
+      - 'multipart/form-data'
+      - 'application/x-www-form-urlencoded'
