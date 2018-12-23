@@ -1,5 +1,7 @@
 # koa-session-dynamodb-store
 
+![](https://img.shields.io/npm/dt/koa-session-dynamodb-store.svg?style=flat-square)
+
 It is extension of [koa-session](https://github.com/koajs/session) that uses [DynamoDB](https://aws.amazon.com/dynamodb/) as session store inspired by [dynamodb-store](https://github.com/rafaelrpinto/dynamodb-store).
 
 The project uses the following stack:
