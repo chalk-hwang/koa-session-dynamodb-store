@@ -1,6 +1,12 @@
 # koa-session-dynamodb-store
 
-![](https://img.shields.io/npm/dt/koa-session-dynamodb-store.svg?style=flat-square)
+[![NPM version][npm-image]][npm-url]
+[![npm download][download-image]][download-url]
+
+[npm-image]: https://img.shields.io/npm/v/koa-session-dynamodb-store.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/koa-session
+[download-image]: https://img.shields.io/npm/dt/koa-session-dynamodb-store.svg?style=flat-square
+[download-url]: https://npmjs.org/package/koa-
 
 It is extension of [koa-session](https://github.com/koajs/session) that uses [DynamoDB](https://aws.amazon.com/dynamodb/) as session store inspired by [dynamodb-store](https://github.com/rafaelrpinto/dynamodb-store).
 
@@ -30,7 +36,7 @@ const DynamoDBStore = require('koa-session-dynamodb-store');
 app.use(koaSession({
     store: new DynamoDBStore(options),
     ...
-}));
+}, app));
 ```
 
 Usage within dynamodb-local:
@@ -51,7 +57,7 @@ const dynamoDBStoreOptions = {
 app.use(koaSession({
     store: new DynamoDBStore(dynamoDBStoreOptions),
     ...
-}));
+}, app));
 ```
 
 ## Options
@@ -75,6 +81,14 @@ app.use(koaSession({
 }
 ```
 
-The `table` configuration is optional. The missing properties will be replaced by [defaults](https://github.com/DGURI/koa-session-dynamodb-store/blob/master/lib/constants.js). `readCapacityUnits` and `writeCapacityUnits` are only used if the table is created by this store.
+The `table` configuration is optional. The missing properties will be replaced by [defaults](https://github.com/DGURI/koa-session-dynamodb-store/blob/master/lib/constants.js).
+
+Changing the `table.ttlKey` property may be ignored if the TTL attribute of DynamoDB is enabled. In this case, use the TTL property of DynamoDB as a priority.
+
+If you have recently changed the value of `table.useTtlExpired`, the DynamoDB service will return an error. This will not work, please try again later.
+
+Changing the `readCapacityUnits` and `writeCapacityUnits` frequently can also cause the DynamoDB service to return an error.
+
+Please refer to the [AWS DynamoDB Development Guide](https://docs.aws.amazon.com/ko_kr/amazondynamodb/latest/developerguide/Programming.Errors.html) for details of the above error.
 
 The `dynamoConfig` can be optional if the following environment variables are set: **AWS_ACCESS_KEY_ID**, **AWS_SECRET_ACCESS_KEY** and **AWS_REGION** (which are present on Lambda Functions running on AWS). All properties from [AWS.DynamoDB constructor](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB.html#constructor-property) can be informed in this structure.
