@@ -1,5 +1,5 @@
 {
-  "name": "aws-nodejs-ecma-script",
+  "name": "koa-session-dynamodb-store-example",
   "version": "1.0.0",
   "description": "Serverless webpack example using ecma script",
   "scripts": {

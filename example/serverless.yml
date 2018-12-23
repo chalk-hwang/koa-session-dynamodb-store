@@ -1,11 +1,10 @@
 service:
-  name: koa-session-dynamodb-store-example
+  name: dynamodb-store-example
 
 # Add the serverless-webpack plugin
 plugins:
   - serverless-webpack
   - serverless-dotenv-plugin
-  - serverless-domain-manager
   - serverless-dynamodb-local
   - serverless-offline
 
@@ -21,7 +20,9 @@ provider:
       Action:
         - dynamodb:CreateTable
         - dynamodb:UpdateTable
+        - dynamodb:UpdateTimeToLive
         - dynamodb:DescribeTable
+        - dynamodb:DescribeTimeToLive
         - dynamodb:Query
         - dynamodb:Scan
         - dynamodb:GetItem
