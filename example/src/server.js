@@ -25,14 +25,14 @@ export default class Server {
       },
       dynamoConfig: {},
     };
-    if (process.env.NODE_ENV === 'development') {
-      dynamoDBStoreOptions.dynamoConfig = {
-        region: 'local',
-        endpoint: 'http://localhost:8000',
-        accessKeyId: 'dummyKey',
-        secretAccessKey: 'dummyKey',
-      };
-    }
+    // if (process.env.NODE_ENV === 'development') {
+    //   dynamoDBStoreOptions.dynamoConfig = {
+    //     region: 'local',
+    //     endpoint: 'http://localhost:8000',
+    //     accessKeyId: 'dummyKey',
+    //     secretAccessKey: 'dummyKey',
+    //   };
+    // }
 
     app.use(
       koaSession(
