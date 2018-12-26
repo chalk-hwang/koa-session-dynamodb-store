@@ -3,32 +3,36 @@ const DynamoDBStore = require('../dist/DynamoDBStore').default;
 jest.mock('aws-sdk');
 
 describe('DynamoDBStore/constructor', () => {
-    it('should a be constructor', () => {
-        expect(new DynamoDBStore()).toBeInstanceOf(DynamoDBStore);
+  it('should a be constructor', () => {
+    const store = new DynamoDBStore();
+
+    expect(store).toBeInstanceOf(DynamoDBStore);
+  });
+
+  describe('DynamoDBStore:autoCreateTable', () => {
+    let createTableIfDontExists;
+    let originFn;
+
+    beforeEach(() => {
+      originFn = DynamoDBStore.prototype.createTableIfDontExists;
+      createTableIfDontExists = jest.fn(() => {});
+      DynamoDBStore.prototype.createTableIfDontExists = createTableIfDontExists;
     });
 
-    describe('DynamoDBStore:autoCreateTable', () => {
-        let createTableIfDontExists;
-        let originFn;
+    afterEach(() => {
+      DynamoDBStore.prototype.createTableIfDontExists = originFn;
+    });
 
-        beforeEach(() => {
-            originFn = DynamoDBStore.prototype.createTableIfDontExists;
-            createTableIfDontExists = jest.fn(() => {});
-            DynamoDBStore.prototype.createTableIfDontExists = createTableIfDontExists;
-        });
+    it('should not provide autoCreateTable functionality by default', () => {
+      const store = new DynamoDBStore();
 
-        afterEach(() => {
-            DynamoDBStore.prototype.createTableIfDontExists = originFn;
-        });
+      expect(store.createTableIfDontExists.mock.calls.length).toEqual(0);
+    });
 
-        it('should not provide autoCreateTable functionality by default', () => {
-            new DynamoDBStore();
-            expect(createTableIfDontExists.mock.calls.length).toEqual(0);
-        });
+    it('should provide autoCreateTable functionality on  demand', () => {
+      const store = new DynamoDBStore({ autoCreateTable: true });
 
-        it('should provide autoCreateTable functionality on  demand', () => {
-            new DynamoDBStore({autoCreateTable: true});
-            expect(createTableIfDontExists.mock.calls.length).toEqual(1);
-        });
-    })
+      expect(store.createTableIfDontExists.mock.calls.length).toEqual(1);
+    });
+  });
 });
