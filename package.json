@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "rm -rf dist && NODE_ENV=production babel lib -d dist",
-    "pb": "yarn build && yarn publish",
+    "pb": "yarn build && yarn test && yarn publish",
     "test": "jest"
   },
   "repository": {
