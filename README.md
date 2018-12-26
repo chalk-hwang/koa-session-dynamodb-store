@@ -4,9 +4,9 @@
 [![npm download][download-image]][download-url]
 
 [npm-image]: https://img.shields.io/npm/v/koa-session-dynamodb-store.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/koa-session
+[npm-url]: https://npmjs.org/package/koa-session-dynamodb-store
 [download-image]: https://img.shields.io/npm/dt/koa-session-dynamodb-store.svg?style=flat-square
-[download-url]: https://npmjs.org/package/koa-
+[download-url]: https://npmjs.org/package/koa-session-dynamodb-store
 
 It is extension of [koa-session](https://github.com/koajs/session) that uses [DynamoDB](https://aws.amazon.com/dynamodb/) as session store inspired by [dynamodb-store](https://github.com/rafaelrpinto/dynamodb-store).
 
