@@ -4,3 +4,4 @@ example
 .eslintignore
 .eslintrc.js
 .flowconfig
+test
