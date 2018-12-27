@@ -30,7 +30,7 @@ describe('DynamoDBStore/constructor', () => {
     });
 
     it('should provide autoCreateTable functionality on  demand', () => {
-      const store = new DynamoDBStore({ autoCreateTable: true });
+      const store = new DynamoDBStore({ table: { autoCreate: true } });
 
       expect(store.createTableIfDontExists.mock.calls.length).toEqual(1);
     });
