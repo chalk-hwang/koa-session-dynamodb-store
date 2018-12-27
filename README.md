@@ -71,6 +71,7 @@ app.use(koaSession({
     "useTtlExpired": "<BOOLEAN>", // default, true
     "readCapacityUnits": "<NUMBER>", // default,: 5
     "writeCapacityUnits": "<NUMBER>" // default, 5
+    "autoCreate": "<BOOLEAN>" // default, false
   },
   "dynamoConfig": {
     "accessKeyId": "<AWS ACCESS KEY>", // default
@@ -90,5 +91,11 @@ If you have recently changed the value of `table.useTtlExpired`, the DynamoDB se
 Changing the `readCapacityUnits` and `writeCapacityUnits` frequently can also cause the DynamoDB service to return an error.
 
 Please refer to the [AWS DynamoDB Development Guide](https://docs.aws.amazon.com/ko_kr/amazondynamodb/latest/developerguide/Programming.Errors.html) for details of the above error.
+
+If option `table.autoCreate` is set to **true** the `store` will try to create a session table automatically during its initialization. Otherwise in order to initialize the table developer can explicitly call
+```js
+  await store.createTableIfDontExists();
+```
+at the right point according to an application architecture.
 
 The `dynamoConfig` can be optional if the following environment variables are set: **AWS_ACCESS_KEY_ID**, **AWS_SECRET_ACCESS_KEY** and **AWS_REGION** (which are present on Lambda Functions running on AWS). All properties from [AWS.DynamoDB constructor](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB.html#constructor-property) can be informed in this structure.
