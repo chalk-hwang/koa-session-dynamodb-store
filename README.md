@@ -33,6 +33,12 @@ Usage within koa:
 const koaSession = require("koa-session");
 const DynamoDBStore = require('koa-session-dynamodb-store');
 
+const options = {
+  table: {
+    autoCreate: true // You should set this option to true if you want to automatically create a DynamoDB table for your session.
+  }
+}
+
 app.use(koaSession({
     store: new DynamoDBStore(options),
     ...
@@ -93,9 +99,11 @@ Changing the `readCapacityUnits` and `writeCapacityUnits` frequently can also ca
 Please refer to the [AWS DynamoDB Development Guide](https://docs.aws.amazon.com/ko_kr/amazondynamodb/latest/developerguide/Programming.Errors.html) for details of the above error.
 
 If option `table.autoCreate` is set to **true** the `store` will try to create a session table automatically during its initialization. Otherwise in order to initialize the table developer can explicitly call
+
 ```js
-  await store.createTableIfDontExists();
+await store.createTableIfDontExists();
 ```
+
 at the right point according to an application architecture.
 
 The `dynamoConfig` can be optional if the following environment variables are set: **AWS_ACCESS_KEY_ID**, **AWS_SECRET_ACCESS_KEY** and **AWS_REGION** (which are present on Lambda Functions running on AWS). All properties from [AWS.DynamoDB constructor](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB.html#constructor-property) can be informed in this structure.
