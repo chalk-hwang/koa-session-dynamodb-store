@@ -22,6 +22,7 @@ export default class Server {
         useTtlExpired: true,
         readCapacityUnits: 5,
         writeCapacityUnits: 5,
+        autoCreate: true
       },
       dynamoConfig: {},
     };
