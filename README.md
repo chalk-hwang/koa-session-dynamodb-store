@@ -58,8 +58,8 @@ const dynamoDBStoreOptions = {
     accessKeyId: "dummyKey",
     secretAccessKey: "dummyKey"
   };
-}
-;
+};
+
 app.use(koaSession({
     store: new DynamoDBStore(dynamoDBStoreOptions),
     ...
